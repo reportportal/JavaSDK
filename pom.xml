@@ -1,0 +1,215 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.zed.test.ReportPortal</groupId>
+  <artifactId>JavaSDK</artifactId>
+  <version>0.0.1</version>
+   
+  <name>Maven core</name>
+  <description>The maven main core project description</description>
+  <url>http://maven.apache.org</url>
+ 
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+ 
+ <repositories>
+
+  
+   <repository>
+  <id>public</id>
+     <url>https://mvnrepository.com/artifact/</url>
+ 
+ </repository>  
+  <repository>
+ <id>bintray</id>
+     <url>http://dl.bintray.com/epam/reportportal</url>
+ 
+ </repository>
+ 
+  <repository>
+    <id>jitpack</id>
+     <url>https://jitpack.io</url>
+ 
+ </repository>
+ 
+ </repositories>
+  <scm>
+    <url>https://svn.apache.org/viewvc/maven</url>
+  </scm>
+  
+  <build>
+   <pluginManagement>
+<plugins>
+<plugin>
+ <artifactId>maven-resources-plugin</artifactId>
+ <version>3.1.0</version>
+ 
+ </plugin>
+<plugin>
+ <artifactId>maven-surefire-plugin</artifactId>
+ <version>2.12.4</version>
+ </plugin>
+ </plugins>
+ </pluginManagement>
+ <sourceDirectory>src</sourceDirectory>
+<resources>
+<resource>
+
+ <directory>TestData</directory>
+<excludes>
+ <exclude>**/*.java</exclude>
+ </excludes>
+ </resource>
+ <resource>
+            <directory>${basedir}/src/main/resources</directory>
+            <includes>
+                <include>logback.xml</include>
+     
+            </includes>
+            <!-- relative to target/classes
+                 i.e. ${project.build.outputDirectory} -->
+            <targetPath>${project.build.outputDirectory}/com/td/</targetPath>
+        </resource>
+ </resources>
+<plugins>  
+<plugin>
+ <artifactId>maven-assembly-plugin</artifactId>
+ <version>3.1.0</version>
+<configuration>
+<descriptorRefs>
+ <descriptorRef>jar-with-dependencies</descriptorRef>
+ </descriptorRefs>
+<archive>
+<manifest>
+ <mainClass>org.zed.test.rp.Report</mainClass>
+ </manifest>
+ </archive>
+ </configuration>
+<executions>
+<execution>
+ <id>make-assembly</id>
+ 
+ <phase>package</phase>
+ 
+<goals>
+ <goal>single</goal>
+ </goals>
+ </execution>
+ </executions>
+ </plugin>  
+<plugin>
+ <groupId>org.apache.maven.plugins</groupId>
+ <artifactId>maven-compiler-plugin</artifactId>
+ <version>3.8.0</version>
+<configuration>
+ <source>1.7</source>
+ <target>1.8</target>
+ </configuration>
+ </plugin>
+<plugin>
+ <groupId>org.apache.maven.plugins</groupId>
+ <artifactId>maven-eclipse-plugin</artifactId>
+ <version>2.10</version>
+ </plugin>
+<plugin>
+ <groupId>org.apache.maven.plugins</groupId>
+ <artifactId>maven-jar-plugin</artifactId>
+ <version>3.1.0</version>
+<configuration>
+<archive>
+<manifest>
+ <mainClass>org.zed.test.rp.Report</mainClass>
+ </manifest>
+ </archive>
+  <excludes>
+         
+   </excludes>
+   
+ </configuration>
+ </plugin>
+   <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-enforcer-plugin</artifactId>
+        <version>1.4</version>
+        <executions>
+          <execution>
+            <id>enforce-java</id>
+            <goals>
+              <goal>enforce</goal>
+            </goals>
+            <configuration>
+              <rules>
+                <requireJavaVersion>
+                  <version>1.8.0</version>
+                </requireJavaVersion>
+              </rules>    
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      
+          
+        <plugin>  
+        <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-dependency-plugin -->
+ 
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-dependency-plugin</artifactId>
+    <version>3.1.1</version>
+ 
+        
+        </plugin>  
+        
+ </plugins>
+  </build>
+ 
+
+
+  <dependencies>
+          <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+        <version>1.7.25</version>
+    </dependency>
+    <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-log4j12</artifactId>
+        <version>1.7.25</version>
+    </dependency>
+<dependency>
+  <groupId>com.epam.reportportal</groupId>
+  <artifactId>client-java</artifactId>
+  <version>4.0.9</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/com.epam.reportportal/rest-client-core -->
+<dependency>
+    <groupId>com.epam.reportportal</groupId>
+    <artifactId>rest-client-core</artifactId>
+    <version>1.0.4</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/com.epam.reportportal/logger-java-log4j -->
+<dependency>
+    <groupId>com.epam.reportportal</groupId>
+    <artifactId>logger-java-log4j</artifactId>
+    <version>4.0.1</version>
+</dependency>
+ <!-- https://mvnrepository.com/artifact/junit/junit -->
+<dependency>
+    <groupId>junit</groupId>
+    <artifactId>junit</artifactId>
+    <version>4.12</version>
+    <scope>test</scope>
+</dependency>
+ <!-- https://mvnrepository.com/artifact/com.epam.reportportal/commons-model -->
+<dependency>
+    <groupId>com.epam.reportportal</groupId>
+    <artifactId>commons-model</artifactId>
+    <version>4.2.0</version>
+</dependency>
+ 
+
+  </dependencies>
+</project>

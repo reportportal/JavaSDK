@@ -4,6 +4,8 @@ Can be use with nay java based project and allow testing artifiacts to be upload
 
 Improvement is welcome
 
+
+```xml
 <dependency>
   <groupId>com.github.reportportal</groupId>
   <artifactId>JavaSDK</artifactId>

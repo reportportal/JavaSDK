@@ -6,6 +6,7 @@ target/**
 gradle/**
 bin/**
 build/**
+pom.xml
 
 
 .

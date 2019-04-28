@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.github.reportportal</groupId>
 	<artifactId>JavaSDK</artifactId>
-	<version>0.0.1</version>
+	<version>0.0.2-SNAPSHOT</version>
 
 	<name>Maven core</name>
 	<description>The maven main core project description</description>
@@ -46,7 +46,7 @@
 
 <url>https://github.com/reportportal/JavaSDK</url>
 
-<tag>JavaSDK-0.0.1</tag>
+<tag>HEAD</tag>
 
 </scm>
 
